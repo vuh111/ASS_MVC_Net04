@@ -16,3 +16,31 @@ html {
 body {
   margin-bottom: 60px;
 }
+*{
+    font-size:large;
+}
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+    .search-container input[type=text] {
+        padding: 6px;
+        border: none;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+
+    .search-container button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .search-container button:hover {
+            background-color: #45a049;
+        }

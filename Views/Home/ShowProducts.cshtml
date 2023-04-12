@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ASS_MVC.Models.Product>
-
 @{
     ViewData["Title"] = "ShowProducts";
+
 }
 
 <h1>ShowProducts</h1>
@@ -31,10 +31,15 @@
         </div>
     
         <div class="col-lg-9 col-md-7">
+            <div class="btn-group" role="group" aria-label="Basic example" style="margin-bottom: 15px;">
+                <span style="margin-right: 25px;">Sắp xếp theo </span>
+                <button type="button" class="btn ">Liên quan</button>
+                <button type="button" class="btn ">Mới Nhất</button>
+                <button type="button" class="btn " ng-click="sortOrder('gia')">Giá</button>
+            </div>
             <div class="row">
                 @foreach (var item in Model)
                 {
-
 
                     if (a % 3 == 0)
                     {
@@ -43,7 +48,7 @@
                     }
                     <div class="col-lg-4 colcol-md-6 col-sm-6" style="margin-top:20px">
                         <div class="card" style="width: 18rem;">
-                            <img style="max-width:300px" src="https://scontent.fhan5-1.fna.fbcdn.net/v/t39.30808-6/337010779_610877380905683_1423990840921128200_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=j68lT1EMIkAAX97VWzx&_nc_ht=scontent.fhan5-1.fna&oh=00_AfBFoAKdnV307s1bQGpkkZQup3Om7dmnvEw1jC84MLsdDA&oe=6422F674" />
+                            <img style="max-width:300px"  src="~/images/@item.Description" />
                             <div class="card-body" style="display:flex!important;align-items:center;justify-content:center">
                                 <h5 class="card-title">@item.Name</h5>
                             </div>

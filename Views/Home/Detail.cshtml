@@ -1,29 +1,93 @@
 ﻿@model ASS_MVC.Models.Product
+@using System.Web;
+@using Newtonsoft.Json;
 
 @{
     ViewData["Title"] = "Detail";
+    ViewData["quantity"] = 1;
+    var quantity = int.Parse(ViewData["quantity"].ToString());
+    
+
 }
 
 <h1>Detail</h1>
 
-
-<div class="container">
+@{
 	
-		<div class="row">
-			<div class="col-md-6">
-			<img src="@Url.Content("~/wwwroot/Images/1.png")" class="img-responsive">
-			</div>
-			<div class="col-md-6">
-				<h3>Tên sản phẩm</h3>
-				<p>Mô tả sản phẩm</p>
-				<p>Giá: 100.000đ</p>
-				<p>Số lượng: 1</p>
-				<button class="btn btn-primary">Thêm vào giỏ hàng</button>
-			</div>
-		</div>
-	</div>
+}
+<div class="container">
+    <div class="main_detail" style="margin-top: 30px;">
+        <div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <img style="width: 550px;" src="/images/pd1.png" alt="">
+            </div>
+            <div class="col-md-6">
+                <h3 style="color: red;">@Model.Name</h3>
+                <div class="product__details__rating" style="color: rgb(234, 255, 0);margin-bottom: 15px;">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <span style="color: black;">(18 đánh giá)</span>
+                    <span style="color: black;">(100 đã bán)</span>
+                </div>
+                <span class="price-list" style="display: flex; flex-direction: column;">
+                    <span class="price" style="color: red; font-size: xx-large;">@Model.Price<span>₫</span></span
+                </span>
 
-	<!-- Footer -->
-	<footer class="container-fluid text-center">
-		<p>Bản quyền &copy; Shop online</p>
-	</footer>
+                <form method="post" action="@Url.Action("Add", "Cart")">
+                    <input type="hidden" name="product" value='@JsonConvert.SerializeObject(Model)' />
+
+                    <div class="pro-qty">
+                        <button type="button" class="btn decrease-quantity" asp-action="Decrea" asp-controller="Home" asp-route-itemid="@Model.Id">-</button>
+                         <input style="text-align: center;" name="quantity" class="vol_sp" type="text" value="@quantity">
+                        <button type="button" class="btn increase-quantity" asp-action="Increa" asp-controller="Home" asp-route-Id="@Model.Id">+</button>
+                    </div>
+                    <button type="submit" class="btn add-to-cart">Thêm vào giỏ hàng</button>
+                </form>
+                
+                <div style="display: flex; flex-direction: column; margin-top: 10px;">
+
+                    <span>
+                        <b>Chia sẻ</b>
+                        <div class="share" style="width: 250px;margin-top: 20px; font-size: xx-large; display: flex; justify-content: space-between;">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="main_img">
+        <h2>SẢN PHẨM LIÊN QUAN</h2>
+
+       @* <div class="row">
+            <div class="col-md-3" ng-repeat="item in listsp  | limitTo:4">
+                <img src="{{item.anh}}" alt="..." class="img-thumbnail">
+                <div class="caption" ng-click="opendetail(item.id)">
+                    <p style="color: rgb(0, 0, 0);font-size: larger;">{{item.ten}}</p>
+                    <div class="price-tag">
+                        <span class="price deal">{{item.gia|number:0}}<span>₫</span></span>
+                    </div>
+                    <div class="vertical-center" style="display: flex;justify-content: center;">
+                        <button type="button" class="btn btn-danger" style="margin-top: 20px;">
+                            <i class="fa fa-shopping-basket" aria-hidden="true" style="color: rgb(255, 255, 255);"> Mua</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+
+    </div>
+</div>
+  </div>
+</div>

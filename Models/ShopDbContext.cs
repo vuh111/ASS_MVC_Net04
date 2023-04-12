@@ -9,7 +9,7 @@ namespace ASS_MVC.Models
 {
     public class ShopDbContext:DbContext
     {
-          public ShopDbContext() { }
+        public ShopDbContext() { }
         public ShopDbContext(DbContextOptions options):base(options) { }
         public DbSet<Product> Products { get; set; }
         public DbSet<Bill> Bills { get; set; }
