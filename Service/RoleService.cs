@@ -6,6 +6,10 @@ namespace ASS_MVC.Service
     public class RoleService : IRole
     {
         ShopDbContext Context;
+        public RoleService()
+        {
+            Context= new ShopDbContext();
+        }
         public bool Add(Role role)
         {
             try

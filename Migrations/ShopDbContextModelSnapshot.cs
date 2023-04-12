@@ -44,7 +44,7 @@ namespace ASS_MVC.Migrations
                     b.ToTable("HoaDon", (string)null);
                 });
 
-            modelBuilder.Entity("ASS_MVC.Models.BillDetails", b =>
+            modelBuilder.Entity("ASS_MVC.Models.BillDetail", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -174,7 +174,7 @@ namespace ASS_MVC.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
@@ -184,9 +184,11 @@ namespace ASS_MVC.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasAlternateKey("Username");
 
                     b.HasIndex("RoleId");
 
@@ -204,7 +206,7 @@ namespace ASS_MVC.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ASS_MVC.Models.BillDetails", b =>
+            modelBuilder.Entity("ASS_MVC.Models.BillDetail", b =>
                 {
                     b.HasOne("ASS_MVC.Models.Bill", "Bill")
                         .WithMany("BillDetails")

@@ -14,6 +14,7 @@ namespace ASS_MVC.Service
         {
             try
             {
+                user.Id=Guid.NewGuid();
                 Context.Users.Add(user);
                 Context.SaveChanges();
                 return true;
